@@ -5,7 +5,13 @@ const types = {
     regex:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 
-    message: "Preencha um email valido",
+    message: "Fill in a valid email",
+  },
+  password: {
+    regex: /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g,
+
+    message:
+      "Password must contain at least one lowercase letter, one uppercase letter, one number, one special character and a minimum length of eight characters.",
   },
 };
 
@@ -16,7 +22,7 @@ const useForm = (type) => {
   function validate(value) {
     if (type === false) return true;
     if (value.length === 0) {
-      setError("Preencha um valor");
+      setError("Fill in a value");
       return false;
     } else if (types[type] && !types[type].regex.test(value)) {
       setError(types[type].message);
