@@ -1,10 +1,11 @@
 import React from "react";
+import Feed from "./Feed/Feed";
 
 const Home = () => {
   return (
-    <div style={{ border: "1px solid black", height: "80vh" }}>
-      <h1>Home</h1>
-    </div>
+    <section className="container mainContainer">
+      <Feed />
+    </section>
   );
 };
 
