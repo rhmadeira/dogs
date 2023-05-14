@@ -2,9 +2,27 @@ import React, { createContext, useCallback, useEffect, useState } from "react";
 import { TOKEN_GET, TOKEN_POST, TOKEN_VALIDATE_POST } from "./api";
 import { useNavigate } from "react-router-dom";
 
+interface UserLogin {
+  username: string;
+  password: string;
+}
+
+interface UserContextData {
+  userLogin: (username: string, password: string) => Promise<void>;
+  userLogout: () => void;
+  data: any;
+  error: string | null;
+  loading: boolean;
+  login: boolean;
+}
+
+interface UserStorageProps {
+  children: React.ReactNode;
+}
+
 export const UserContext = createContext();
 
-export const UserStorage = ({ children }) => {
+export const UserStorage = ({ children }: UserStorageProps) => {
   const [data, setData] = useState(null);
   const [login, setLogin] = useState(null);
   const [loading, setLoading] = useState(false);
