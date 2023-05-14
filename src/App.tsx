@@ -1,13 +1,9 @@
 import "./App.css";
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./shared/components/Footer";
+import { UserStorage } from "./shared/context/UserContext";
 import Header from "./shared/components/Header";
-import Home from "./shared/components/Home";
-import Login from "./shared/components/Login/Login";
-import { UserStorage } from "./UserContext";
-import ProtectedRoute from "./shared/components/Elements/ProtectedRoute";
-import User from "./shared/components/User/User";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -15,9 +11,9 @@ function App() {
       <BrowserRouter>
         <UserStorage>
           <Header />
-          {/* <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="login/*" element={<Login />} />
+            {/* <Route path="login/*" element={<Login />} />
             <Route
               path="conta/*"
               element={
@@ -25,9 +21,9 @@ function App() {
                   <User />
                 </ProtectedRoute>
               }
-            />
+            /> */}
           </Routes>
-          <Footer /> */}
+          <Footer />
         </UserStorage>
       </BrowserRouter>
     </div>

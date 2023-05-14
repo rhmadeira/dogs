@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useEffect, useState } from "react";
-import { TOKEN_GET, TOKEN_POST, TOKEN_VALIDATE_POST } from "./api";
+import { TOKEN_GET, TOKEN_POST, TOKEN_VALIDATE_POST } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 interface UserLogin {
@@ -8,23 +8,25 @@ interface UserLogin {
 }
 
 interface UserContextData {
-  userLogin: (username: string, password: string) => Promise<void>;
-  userLogout: () => void;
   data: any;
   error: string | null;
   loading: boolean;
   login: boolean;
+  userLogout: () => void;
+  userLogin: (username: string, password: string) => Promise<void>;
 }
 
 interface UserStorageProps {
   children: React.ReactNode;
 }
 
-export const UserContext = createContext();
-
+// export const UserContext = createContext();
+export const UserContext = createContext<UserContextData>(
+  {} as UserContextData
+);
 export const UserStorage = ({ children }: UserStorageProps) => {
   const [data, setData] = useState(null);
-  const [login, setLogin] = useState(null);
+  const [login, setLogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ export const UserStorage = ({ children }: UserStorageProps) => {
     [navigate]
   );
 
-  async function getUser(token) {
+  async function getUser(token: string) {
     const { url, options } = TOKEN_GET(token);
     const response = await fetch(url, options);
     const json = await response.json();
@@ -49,7 +51,7 @@ export const UserStorage = ({ children }: UserStorageProps) => {
     setLogin(true);
   }
 
-  async function userLogin(username, password) {
+  async function userLogin(username: string, password: string) {
     try {
       setError(null);
       setLoading(true);
@@ -60,7 +62,7 @@ export const UserStorage = ({ children }: UserStorageProps) => {
       window.localStorage.setItem("token", token);
       getUser(token);
       navigate("/conta");
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       setLoading(false);
     } finally {
