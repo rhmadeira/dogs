@@ -1,10 +1,8 @@
 import React from "react";
-import Feed from "../../shared/components/Feed/Feed";
+import Feed from "../../shared/components/Feed";
 
 const Home = () => {
-  return (
-    <section className="container mainContainer">{/* <Feed /> */}</section>
-  );
+  return <section className="container mainContainer">{<Feed />}</section>;
 };
 
 export default Home;

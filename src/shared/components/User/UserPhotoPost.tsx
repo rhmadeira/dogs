@@ -5,7 +5,7 @@ import styles from "./UserPhotoPost.module.css";
 import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
 import { PHOTO_POST } from "../../api";
-import Error from "../Elements/Error";
+import Error from "../elements/Error";
 import { useNavigate } from "react-router-dom";
 
 const UserPhotoPost = () => {
