@@ -1,8 +1,14 @@
 import React from "react";
-import Image from "../Elements/Image";
+import Image from "../../elements/Image";
 import styles from "./FeedPhotoItem.module.css";
+import { IPhoto } from "../../../services/photos";
 
-const FeedPhotosItem = ({ photo, setModalPhoto }) => {
+interface IFeedPhotosItemProps {
+  photo: IPhoto;
+  setModalPhoto: React.Dispatch<React.SetStateAction<IPhoto>>;
+}
+
+const FeedPhotosItem = ({ photo, setModalPhoto }: IFeedPhotosItemProps) => {
   function handleClick() {
     setModalPhoto(photo);
   }
