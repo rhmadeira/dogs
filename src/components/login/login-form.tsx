@@ -5,7 +5,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import Button from "@/components/forms/button";
 import Input from "@/components/forms/input";
 import ErrorMessage from "../helper/error-message";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import styles from "./login-form.module.css";
 
@@ -30,8 +30,8 @@ export default function LoginForm() {
     data: null,
   });
 
-  React.useEffect(() => {
-    if (state.ok) window.location.href = "/conta";
+  useEffect(() => {
+    if (state.ok) window.location.href = "/account";
   }, [state.ok]);
 
   return (
@@ -42,13 +42,13 @@ export default function LoginForm() {
         <ErrorMessage error={state.error} />
         <FormButton />
       </form>
-      <Link className={styles.perdeu} href="/login/perdeu">
+      <Link className={styles.perdeu} href="/login/recover">
         Perdeu a senha?
       </Link>
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site.</p>
-        <Link className="button" href="/login/criar">
+        <Link className="button" href="/login/create">
           Cadastro
         </Link>
       </div>
