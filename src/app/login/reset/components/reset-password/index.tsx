@@ -1,12 +1,11 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import passwordReset from "@/actions/password-reset";
 import Button from "@/components/forms/button";
 import Input from "@/components/forms/input";
-import React from "react";
-import styles from "./login-form.module.css";
 import ErrorMessage from "@/components/helper/error-message";
-import passwordReset from "@/actions/password-reset";
+import { useFormState, useFormStatus } from "react-dom";
+import styles from "./login-form.module.css";
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -22,7 +21,7 @@ function FormButton() {
   );
 }
 
-export default function RecoverPasswordForm({
+export default function ResetPasswordForm({
   keyToken,
   login,
 }: {
