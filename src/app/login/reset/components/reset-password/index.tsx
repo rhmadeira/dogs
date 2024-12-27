@@ -13,9 +13,9 @@ function FormButton() {
   return (
     <>
       {pending ? (
-        <Button disabled={pending}>Resetando...</Button>
+        <Button disabled={pending}>Reset...</Button>
       ) : (
-        <Button>Resetar Senha</Button>
+        <Button>Reset password</Button>
       )}
     </>
   );
@@ -36,7 +36,7 @@ export default function ResetPasswordForm({
 
   return (
     <form action={action} className={styles.form}>
-      <Input label="Nova Senha" name="password" type="password" />
+      <Input label="New Password" name="password" type="password" />
       <input type="hidden" name="login" value={login} />
       <input type="hidden" name="key" value={keyToken} />
       <ErrorMessage error={state.error} />
