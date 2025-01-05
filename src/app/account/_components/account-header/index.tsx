@@ -34,6 +34,7 @@ export default function AccountHeader() {
   }, [pathname]);
 
   const { setUser } = useUser();
+
   async function handleLogout() {
     await logout();
     setUser(null);
